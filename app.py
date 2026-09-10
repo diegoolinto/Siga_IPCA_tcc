@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 from src.modelo import processar_dados, treinar_e_prever, testar_estacionariedade, calcular_metricas, baixar_serie
 
 def textoInicial():
+
     # --- Mensagem de boas-vindas / introdução ---
     st.subheader("Bem vindo ao SAPI")
     st.write("""
@@ -73,7 +74,6 @@ cod_alvo = mapa_codigos[alvo_nome]
 cods_exog = [mapa_codigos[n] for n in exog_nomes]
 
 if st.sidebar.button("Executar Análise Completa"):
-
     with st.spinner("Processando..."):
         # 1. Busca e Processamento
         df = processar_dados(cod_alvo, cods_exog)
@@ -126,7 +126,8 @@ if st.sidebar.button("Executar Análise Completa"):
                     st.plotly_chart(fig_corr)
                 else:
                     st.warning("Selecione variáveis exógenas para ver a correlação.")
-
+            if st.button("Voltar para a tela Inicial"):
+                st.rerun()
         else:
             st.error("Erro na conexão com os dados do Banco Central.")
 
@@ -164,5 +165,7 @@ elif st.sidebar.button("Visualizar Dados Reais"):
                 st.dataframe(df_real.sort_index(ascending=False))
         else:
             st.error("Não foi possível carregar os dados. Verifique o código SGS.")
+    if st.button("Voltar para a tela Inicial"):
+        st.rerun()
 else:
     textoInicial()
