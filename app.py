@@ -11,6 +11,54 @@ mapa_codigos = {
     "IPCA": 433, "INPC": 188, "IGP-M": 189, "SELIC": 4390, "IPA-M": 7450
 }
 
+# --- Título e Subtítulo principal ---
+
+st.title("📈 SAPI — Sistema de Análise e Previsão da Inflação")
+st.caption("Trabalho de Conclusão de Curso (TCC) — Tecnólogo em Sistemas para Internet (IFRN)")
+
+st.markdown("---")
+
+# --- Mensagem de boas-vindas / introdução ---
+st.subheader("Welcome ao SAPI")
+st.write("""
+    Esta plataforma foi desenvolvida para **analisar e prever a trajetória da inflação oficial do Brasil (IPCA)** 
+    utilizando técnicas econométricas de **Séries Temporais (Modelo SARIMAX)**. 
+    Com ela, você pode visualizar dados históricos atualizados em tempo real diretamente da API do Banco Central 
+    e simular cenários futuros considerando o impacto de variáveis macroeconômicas como a **Taxa SELIC** e o **IGP-M**.
+    """)
+
+st.markdown("---")
+
+# --- CARDS INFORMATIVOS (3 COLUNAS) ---
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.markdown("### 📊 Dados do BCB")
+    st.write("Consumo automatizado das séries temporais oficiais do Banco Central do Brasil (SGS/BCB).")
+
+with col2:
+    st.markdown("### 🤖 Modelo SARIMAX")
+    st.write("Previsões estatísticas que consideram sazonalidade e a influência de indicadores exógenos.")
+
+with col3:
+    st.markdown("### 🎯 Tomada de Decisão")
+    st.write("Avaliação de métricas de precisão (EQM e DAM) e simulação visual de cenários futuros.")
+
+st.markdown("---")
+
+# --- PASSO A PASSO PAINEL DE AJUDA ---
+st.info(
+    """
+    👈 **Como utilizar a aplicação:**
+    1. Abra o **Menu Lateral (Configurações do Modelo)** clicando na seta no canto superior esquerdo.
+    2. Escolha o **Índice Alvo** (ex: IPCA).
+    3. Selecione as **Variáveis Exógenas** desejadas (ex: SELIC, IGP-M).
+    4. Defina o **Horizonte de Previsão** (quantidade de meses à frente).
+    5. Clique no botão **"Executar Análise Completa"** para gerar os gráficos e relatórios!
+    """
+)
+
+
 st.sidebar.title("Configurações do Modelo")
 
 # 1. Usuário seleciona o alvo(índice a ser analisada) e as influências
